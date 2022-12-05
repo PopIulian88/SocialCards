@@ -29,17 +29,23 @@ export function TextBox({name, myText}) {
 
     return (
         <View style={styles.textBoxContainer}>
-            <View style={{height: '30%', width: '90%', alignItems: 'center' ,justifyContent: 'center'}}>
-                <Text style={{fontSize: 24, color: text_color}}>{name}</Text>
-            </View>
-            <View style={{height: '70%', width: '90%', alignItems: 'center' ,justifyContent: 'center'}}>
+            <Text style={{fontSize: 24, color: text_color}}>{name}</Text>
                 <TextInput
                     style={styles.textBox}
                     onChangeText={onChangeText}
                     placeholder={myText}
                 />
-            </View>
         </View>
+    )
+}
+
+export function CardComponent({name, goTo, navigation}) {
+    return (
+        <TouchableOpacity style={styles.cardBorder}
+                          onPress={() => {navigation.navigate(goTo)}}
+        >
+            <Text style={{fontSize: 21}}>{name}</Text>
+        </TouchableOpacity>
     )
 }
 
@@ -71,8 +77,18 @@ const styles = StyleSheet.create({
         height: 100,
         width: '70%',
         borderRadius: 25,
+        backgroundColor: box_color,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    cardBorder: {
+        height: 100,
+        width: 200,
         backgroundColor: textBox_color,
         alignItems: 'center',
         justifyContent: 'center',
+        borderRadius: 25,
+        borderWidth: 5,
     },
 });
