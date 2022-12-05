@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
 import React from "react";
-import {Spacer, TocuchO, TextBox, CardComponent, InfoLinkComponent} from "./Help_Function";
+import {Spacer, TocuchO, TextBox, CardComponent, InfoLinkComponent, IconLink} from "./Help_Function";
 import {Icon} from "@rneui/themed";
 
 
@@ -156,15 +156,63 @@ function CreateCard({ navigation }) {
                 <Spacer/>
                 <InfoLinkComponent/>
                 <Spacer/>
+                <InfoLinkComponent/>
             </ScrollView>
         </View>
     )
 }
 
-function MyCard() {
+function MyCard({ navigation }) {
     return (
-        <View>
-            <Text>BoSSS</Text>
+        <View style={styles.myCardContainer}>
+            <View style={styles.marginMyCard}>
+                <Icon
+                    reverse
+                    name= "person"
+                    color={box_color}
+                    onPress={() => {navigation.navigate("SocialCardsPage")}}
+                />
+
+                <Text style={{fontSize: 24, fontWeight: 'bold', color: text_color}}>Pop Iulian</Text>
+
+                <Icon
+                    reverse
+                    name= "edit"
+                    color={box_color}
+                    onPress={() => {navigation.navigate("CreateCard")}}
+                />
+            </View>
+            <View style={styles.midMyCard}>
+                <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                    <Image
+                        source={{uri: "https://avatars.githubusercontent.com/u/115413090?v=4"}}
+                        style={{height: "100%", width: "50%", borderRadius: 100}}
+                    />
+                </View>
+                <Spacer/>
+                <View style={{flex: 2, flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap'}}>
+                    <IconLink/>
+                    <IconLink/>
+                    <IconLink/>
+                    <IconLink/>
+                    <IconLink/>
+                </View>
+            </View>
+            <View style={styles.marginMyCard}>
+                <Icon
+                    reverse
+                    name= "share"
+                    color={box_color}
+                    onPress={() => alert("U copy this link")}
+                />
+
+                <Icon
+                    reverse
+                    name= "logout"
+                    color={box_color}
+                    onPress={() => {navigation.navigate("StartPage")}}
+                />
+            </View>
         </View>
     )
 }
@@ -221,9 +269,22 @@ const styles = StyleSheet.create({
         headerBackVisible: false
     },
 
-    downCard: {
+    myCardContainer: {
+      flex: 1,
+        backgroundColor: bg_color,
+        padding: 15,
+    },
+
+    marginMyCard: {
         flex: 1,
-        borderWidth: 5,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+
+    midMyCard: {
+        flex: 6,
+        justifyContent: 'center',
     },
 
 });

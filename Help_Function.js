@@ -65,6 +65,21 @@ export function InfoLinkComponent() {
     )
 }
 
+export function IconLink() {
+    return(
+        <View style={{alignItems: 'center'}}>
+            <Icon
+                reverse
+                name="link"
+                size={40}
+                color={box_color}
+                onPress={() => alert("Nu-mi da drumu")}
+            />
+            <Text>Link Name</Text>
+        </View>
+    )
+}
+
 const styles = StyleSheet.create({
 
 
