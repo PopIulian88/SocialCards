@@ -1,10 +1,11 @@
 import {Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import React from "react";
+import {Icon} from "@rneui/themed";
 
 const bg_color = '#013A20';
 const header_color = '#536F16';
 const textBox_color = '#D4D6CF';
-const box_color = '#3F4122';
+const box_color = '#999900';
 const text_color = '#21B6A8';
 
 export const Spacer = ({height = 15}) => {
@@ -46,6 +47,21 @@ export function CardComponent({name, goTo, navigation}) {
         >
             <Text style={{fontSize: 21}}>{name}</Text>
         </TouchableOpacity>
+    )
+}
+
+export function InfoLinkComponent() {
+    return (
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+            <TextBox name={"Name"} myText={"Link name"}/>
+            <TextBox name={"Link"} myText={"Type link"}/>
+            <Icon
+                reverse
+                name="person"
+                color={box_color}
+                onPress={() => alert("Put your photo")}
+            />
+        </View>
     )
 }
 

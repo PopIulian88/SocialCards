@@ -3,8 +3,7 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
 import React from "react";
-import {Spacer, TocuchO, TextBox, CardComponent} from "./Help_Function";
-import headerShownContext from "@react-navigation/elements/src/Header/HeaderShownContext";
+import {Spacer, TocuchO, TextBox, CardComponent, InfoLinkComponent} from "./Help_Function";
 import {Icon} from "@rneui/themed";
 
 
@@ -12,7 +11,7 @@ import {Icon} from "@rneui/themed";
 const bg_color = '#013A20';
 const header_color = '#536F16';
 const textBox_color = '#D4D6CF';
-const box_color = '#3F4122';
+const box_color = '#999900';
 const text_color = '#21B6A8';
 
 function StartPage({navigation}) {
@@ -115,13 +114,49 @@ function SocialCardsPage({ navigation }) {
 
 function CreateCard({ navigation }) {
     return (
-        <View style={styles.container}>
-            <Icon
-                name='arrow-back'
-                reverse
-                color= {box_color}
-                onPress ={() => navigation.navigate("SocialCardsPage")}
-            />
+        <View style={styles.scrollViewContainer}>
+            <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                <Icon
+                    name='arrow-back'
+                    reverse
+                    color= {box_color}
+                    onPress ={() => navigation.navigate("SocialCardsPage")}
+                />
+
+                <Icon
+                    name='done-outline'
+                    reverse
+                    color= {box_color}
+                    onPress ={() => navigation.navigate("SocialCardsPage")}
+                />
+            </View>
+            <ScrollView style={{flex: 1}}>
+                <View>
+                    <TextBox name={"Card name"} myText={"Type your card title"}/>
+                    <Spacer/>
+                    <TextBox name={"Your name"} myText={"Type your name"}/>
+                    <Spacer/>
+                    <View style={{flex: 1, alignItems: 'center'}}>
+                        <Icon
+                            reverse
+                            name="person"
+                            color={box_color}
+                            onPress={() => alert("Put your photo")}
+                        />
+                    </View>
+                </View>
+            </ScrollView>
+
+            <ScrollView style={{flex: 1}} >
+                <InfoLinkComponent/>
+                <Spacer/>
+                <InfoLinkComponent/>
+                <Spacer/>
+                <InfoLinkComponent/>
+                <Spacer/>
+                <InfoLinkComponent/>
+                <Spacer/>
+            </ScrollView>
         </View>
     )
 }
@@ -184,6 +219,11 @@ const styles = StyleSheet.create({
         },
         headerTitleAlign: 'center',
         headerBackVisible: false
+    },
+
+    downCard: {
+        flex: 1,
+        borderWidth: 5,
     },
 
 });
