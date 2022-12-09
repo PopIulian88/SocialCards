@@ -1,3 +1,3 @@
 # SocialCards
 
-<img src="./Git_Presentation/Prezentation">
+<img src="./Git_Presentation/Presentation.gif">
